@@ -12,7 +12,11 @@ class NowcastAqi extends Model
     protected $hidden = ['ncId', 'locId'];
 
     protected $primaryKey = 'ncId';
-    protected $fillable = ['PM1', 'PM2_5', 'PM10', 'O3', 'CO', 'SO2', 'NO2'];
+    protected $fillable =
+            [
+                    'PM1', 'PM2_5', 'PM10', 'O3', 'CO', 'SO2', 'NO2',
+                    'VN_PM1', 'VN_PM2_5', 'VN_PM10', 'VN_O3', 'VN_CO', 'VN_SO2', 'VN_NO2'
+            ];
 
     public function location()
     {

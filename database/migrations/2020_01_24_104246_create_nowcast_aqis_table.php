@@ -16,6 +16,8 @@ class CreateNowcastAqisTable extends Migration
         Schema::create('nowcast_aqis', function (Blueprint $table) {
             $table->increments('ncId');
             $table->integer('locId')->unsigned();
+
+            //For US_AQI
             $table->double('PM1')->nullable()->default(0);
             $table->double('PM2_5')->nullable()->default(0);
             $table->double('PM10')->nullable()->default(0);
@@ -24,10 +26,19 @@ class CreateNowcastAqisTable extends Migration
             $table->double('SO2')->nullable()->default(0);
             $table->double('NO2')->nullable()->default(0);
 
+            //For VN_AQI
+            $table->double('VN_PM1')->nullable()->default(0);
+            $table->double('VN_PM2_5')->nullable()->default(0);
+            $table->double('VN_PM10')->nullable()->default(0);
+            $table->double('VN_O3')->nullable()->default(0);
+            $table->double('VN_CO')->nullable()->default(0);
+            $table->double('VN_SO2')->nullable()->default(0);
+            $table->double('VN_NO2')->nullable()->default(0);
+
             $table->dateTimeTz('created_at');
 
             $table->foreign('locId')->references('locId')->on('locations')
-                ->onDelete('cascade')->onUpdate('cascade');
+                    ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
